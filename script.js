@@ -9,26 +9,9 @@ let servicePrice2 = + prompt('Сколько это будет стоить?');
 let fullPrice = screenPrice + servicePrice1 + servicePrice2;
 let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback/100)));
 let adaptive = true;
-
-alert ("Первое задание в процессе выполнения");
-
-console.log ("Продолжай в том же духе... :-)");
-
-console.log(typeof title);
-console.log(typeof fullPrice);
-console.log(typeof adaptive);
-
-console.log(screens.length);
-console.log('Стоимость верстки экранов' + ' ' + screenPrice + ' ' + 'рублей/долларов/гривен/юани');
-console.log('Стоимость разработки сайта' + ' ' + fullPrice + ' ' + 'рублей/долларов/гривен/юани');
+let screensA = screens.split(', ');
 
 screens = screens.toLowerCase();
-let screensA = screens.split(', ');
-console.log(screensA);
-
-console.log("Процент отката посреднику за работу" + " " + (fullPrice * (rollback/100)));
-
-console.log(servicePercentPrice);
 
 switch (true) {
     case fullPrice >= 30000:
@@ -44,3 +27,16 @@ switch (true) {
             console.log("Что-то пошло не так");
             break
 };
+
+console.log(typeof title);
+console.log(typeof fullPrice);
+console.log(typeof adaptive);
+
+console.log(screens.length);
+console.log('Стоимость верстки экранов' + ' ' + screenPrice + ' ' + 'рублей/долларов/гривен/юани');
+console.log('Стоимость разработки сайта' + ' ' + fullPrice + ' ' + 'рублей/долларов/гривен/юани');
+
+console.log(screensA);
+console.log("Процент отката посреднику за работу" + " " + (fullPrice * (rollback/100)));
+console.log(servicePercentPrice);
+
