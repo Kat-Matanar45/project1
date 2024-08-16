@@ -41,11 +41,10 @@ const getRollbackMessage = function(price) {
     }
 
 function getTitle(title) {
-    if (title[0] === "_") {
-        title[1].toUpperCase()
-    } else {title[0].toUpperCase()}
-    return title
-}
+    if (!title) {return title;}
+    if (title[0] === ' ') {return title[1].toUpperCase() + title.slice(2);}
+    if (title[0] !== ' ') {return title[0].toUpperCase() + title.slice(1);}
+    }
 
 function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - (fullPrice * (rollback / 100))
