@@ -26,19 +26,14 @@ function getFullPrice(screenPrice, allServicePrices) {
 const getRollbackMessage = function(price) {
     switch (true) {
         case price >= 30000:
-            console.log("Даем скидку в 10% \nИтоговая сумма за работу:" + " " + (price - (price/100*10)));
-            break
+            return "Даем скидку в 10% \nИтоговая сумма за работу:" + " " + (price - (price/100*10));
         case price >= 15000 && price < 30000:
-            console.log("Даем скидку в 5% \nИтоговая сумма за работу:" + " " + (price - (price/100*5)));
-            break
+            return "Даем скидку в 5% \nИтоговая сумма за работу:" + " " + (price - (price/100*5));
         case price >= 0 && price < 15000:
-                console.log("Скидка не предусмотрена \nИтоговая сумма за работу:" + " " + price);
-                break
+            return "Скидка не предусмотрена \nИтоговая сумма за работу:" + " " + price;
         case price < 0:
-                console.log("Что-то пошло не так");
-                break
-    };
-    }
+            return "Что-то пошло не так";
+    }}
 
 function getTitle(title) {
     if (!title) {return title;}
