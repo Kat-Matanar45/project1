@@ -6,19 +6,20 @@ let service1 = prompt('Какой дополнительный тип услуг
 let servicePrice1 = + prompt('Сколько это будет стоить?');
 let service2 = prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = + prompt('Сколько это будет стоить?');
-let fullPrice //= screenPrice + servicePrice1 + servicePrice2;
-let servicePercentPrice //= Math.ceil(fullPrice - (fullPrice * (rollback/100)));
+
+let fullPrice = getFullPrice(); //= screenPrice + servicePrice1 + servicePrice2;
+let servicePercentPrice = getServicePercentPrices(); //= Math.ceil(fullPrice - (fullPrice * (rollback/100)));
 let adaptive = true;
 
 const showTypeOf = function(variable) {
     console.log (variable, typeof variable);
 }
 
-const allServicePrices = function(servicePrice1, servicePrice2) {
+const allServicePrices = function getAllServicePrices() {
     return servicePrice1 + servicePrice2
 }
 
-fullPrice = function getFullPrice(screenPrice, allServicePrices) {
+function getFullPrice(screenPrice, allServicePrices) {
     return screenPrice + allServicePrices
 }
 
@@ -46,13 +47,12 @@ function getTitle(title) {
     return title
 }
 
-servicePercentPrice = function getServicePercentPrices(fullPrice, rollback) {
+function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - (fullPrice * (rollback/100))
 }
 
 screens = screens.toLowerCase().split(', ');
 
-console.log(allServicePrices);
 getFullPrice();
 
 showTypeOf(title);
@@ -61,6 +61,7 @@ showTypeOf(adaptive);
 
 console.log(screens);
 
-console.log(getServicePercentPrices());
-
+console.log(allServicePrices(servicePrice1, servicePrice2));
+console.log(servicePercentPrice(fullPrice, rollback));
+console.log(title);
 console.log(getRollbackMessage(fullPrice));
