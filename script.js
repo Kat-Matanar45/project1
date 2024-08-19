@@ -2,10 +2,8 @@ let title = prompt("Как называется ваш проект?", " кал�
 let screens = prompt("Какие типы экранов нужно разработать?", "Простые, сложные");
 let screenPrice = +prompt('Сколько будет стоить данная работа?');
 let adaptive = confirm("Нужен ли адаптив на сайте?");
-let service1 = prompt('Какой дополнительный тип услуги нужен?');
-let servicePrice1 = +prompt('Сколько это будет стоить?');
-let service2 = prompt('Какой дополнительный тип услуги нужен?');
-let servicePrice2 = +prompt('Сколько это будет стоить?');
+let service1;
+let service2;
 
 let fullPrice; 
 let servicePercentPrice; 
@@ -17,8 +15,16 @@ const showTypeOf = function(variable) {
 }
 
 const getAllServicePrices = function() {
-    return servicePrice1 + servicePrice2;
+    let sum = 0;
+    for (let i = 0; i<2; i++) {
+        if (i===0) {service1 = prompt('Какой дополнительный тип услуги нужен?');}
+        if (i===1) {service2 = prompt('Какой дополнительный тип услуги нужен?');}
+
+        sum += +prompt('Сколько это будет стоить?');
     }
+
+    return sum
+}
 
 const getRollbackMessage = function(price) {
     switch (true) {
@@ -46,7 +52,7 @@ function getServicePercentPrices(fullPrice, rollback) {
     return fullPrice - (fullPrice * (rollback / 100))
 }
 
-allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
+allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices); 
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
@@ -63,3 +69,5 @@ console.log(allServicePrices);
 console.log(servicePercentPrice);
 console.log(title);
 console.log(getRollbackMessage(fullPrice));
+
+console.log("Стоимость верстки экранов " + screenPrice + " рублей" + "\nСтоимость разработки сайта " + fullPrice + " рублей");
