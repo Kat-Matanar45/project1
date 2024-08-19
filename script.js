@@ -18,10 +18,10 @@ const asking = function() {
     title = prompt("Как называется ваш проект?", " калькулятор верстки");
     screens = prompt("Какие типы экранов нужно разработать?", "Простые, сложные");
 
-    screenPrice = prompt('Сколько будет стоить данная работа?');
+    screenPrice = +prompt('Сколько будет стоить данная работа?');
 
     while(!isNumber(screenPrice)) {
-        screenPrice = prompt('Сколько будет стоить данная работа?');
+        screenPrice = +prompt('Сколько будет стоить данная работа?');
     }
 
     adaptive = confirm("Нужен ли адаптив на сайте?");
