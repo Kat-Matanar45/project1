@@ -36,7 +36,10 @@ const getAllServicePrices = function() {
         if (i===0) {service1 = prompt('Какой дополнительный тип услуги нужен?');}
         if (i===1) {service2 = prompt('Какой дополнительный тип услуги нужен?');}
 
-        sum += +prompt('Сколько это будет стоить?');
+        do {sum = prompt('Сколько это будет стоить?')} 
+        while((!isNumber(sum)) || (sum === null));
+        sum = Number(sum.trim());
+        sum += sum;
     }
     return sum
 }
