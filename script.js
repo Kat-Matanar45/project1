@@ -20,14 +20,13 @@ const asking = function() {
 
 //   screenPrice = prompt('Сколько будет стоить данная работа?');
 
-//   while((!isNumber(screenPrice)) && (screenPrice === "null")) {
+//   while((!isNumber(screenPrice)) || (screenPrice === "null")) {
 //        screenPrice = prompt('Сколько будет стоить данная работа?');
 //    }
 
     do {screenPrice = prompt('Сколько будет стоить данная работа?')} 
-    while(!isNumber(screenPrice) && (screenPrice === null));
+    while((!isNumber(screenPrice)) || (screenPrice === null));
 
-    screenPrice = Number(screenPrice.trim());
     adaptive = confirm("Нужен ли адаптив на сайте?");
 }
 
@@ -73,6 +72,7 @@ function getServicePercentPrices(fullPrice, rollback) {
 }
 
 asking();
+screenPrice = Number(screenPrice.trim());
 
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices); 
