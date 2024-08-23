@@ -26,20 +26,22 @@ const asking = function() {
 
     do {screenPrice = prompt('Сколько будет стоить данная работа?')} 
     while((!isNumber(screenPrice)) || (screenPrice === null));
+    screenPrice = Number(screenPrice.trim());
 
     adaptive = confirm("Нужен ли адаптив на сайте?");
 }
 
 const getAllServicePrices = function() {
     let sum = 0;
+    let value;
     for (let i = 0; i<2; i++) {
         if (i===0) {service1 = prompt('Какой дополнительный тип услуги нужен?');}
         if (i===1) {service2 = prompt('Какой дополнительный тип услуги нужен?');}
 
-        do {sum = prompt('Сколько это будет стоить?')} 
-        while((!isNumber(sum)) || (sum === null));
-        sum = Number(sum.trim());
-        sum += sum;
+        do {value = prompt('Сколько это будет стоить?')} 
+        while((!isNumber(value)) || (value === null));
+        value = Number(value.trim());
+        sum = sum + value;
     }
     return sum
 }
@@ -75,7 +77,6 @@ function getServicePercentPrices(fullPrice, rollback) {
 }
 
 asking();
-screenPrice = Number(screenPrice.trim());
 
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(screenPrice, allServicePrices); 
