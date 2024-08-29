@@ -59,17 +59,27 @@ const appData = {
             },
     getServicePercentPrices: function() {
                 return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
+            },
+    logger: function() {
+            console.log(appData.fullPrice);
+            console.log(appData.servicePercentPrice);
+            for (let key in appData) {
+                console.log("Ключ: " + key + " " + "Значение: " + appData[key]);
             }
+            },
+    start: function() {
+        appData.asking();
+        appData.allServicePrices = appData.getAllServicePrices();
+        appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices); 
+        appData.title = appData.getTitle(appData.title);
+        appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+        appData.screens = appData.screens.toLowerCase().split(', ');
+        appData.logger();
+    }
 }
 
-appData.asking();
+appData.start();
 
-appData.allServicePrices = appData.getAllServicePrices();
-appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices); 
-appData.title = appData.getTitle(appData.title);
-appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
 
-appData.screens = appData.screens.toLowerCase().split(', ');
 
-console.log(appData.fullPrice);
-console.log(appData.servicePercentPrice);
+
