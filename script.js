@@ -46,10 +46,6 @@ const getAllServicePrices = function() {
     return sum
 }
 
-const showTypeOf = function(variable) {
-    console.log (variable, typeof variable);
-}
-
 const getRollbackMessage = function(price) {
     switch (true) {
         case price >= 30000:
@@ -85,15 +81,3 @@ servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
 screens = screens.toLowerCase().split(', ');
 
-showTypeOf(title);
-showTypeOf(screenPrice);
-showTypeOf(adaptive);
-
-console.log(screens);
-
-console.log("allServicePrices", allServicePrices);
-console.log(servicePercentPrice);
-console.log(title);
-console.log(getRollbackMessage(fullPrice));
-
-console.log("Стоимость верстки экранов " + screenPrice + " рублей" + "\nСтоимость разработки сайта " + fullPrice + " рублей");
