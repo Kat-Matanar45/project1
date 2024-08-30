@@ -49,7 +49,7 @@ const appData = {
             suffix++;
         }
     
-        appData.services[name + (suffix > 1 ? '_' + suffix : '')] = +value;
+            appData.services[name + (suffix > 1 ? '_' + suffix : '')] = +value;
         }
 
     },
