@@ -36,7 +36,7 @@ const appData = {
         for (let i = 0; i<2; i++) {
             let name; 
             let value = 0;
-            let suffix = 1;
+            let suffix = 0;
 
             do {name = prompt('Какой дополнительный тип услуги нужен?')}
             while (appData.isNumber(name));
@@ -45,11 +45,11 @@ const appData = {
             while((!appData.isNumber(value)) || (value === null));
             value = Number(value.trim());
 
-           while (appData.services.hasOwnProperty(name + (suffix > 1 ? '_' + suffix : ''))) {
+           while (appData.services.hasOwnProperty(name + (suffix > 0 ? '_' + suffix : ''))) {
             suffix++;
         }
     
-            appData.services[name + (suffix > 1 ? '_' + suffix : '')] = +value;
+            appData.services[name + (suffix > 0 ? '_' + suffix : '')] = +value;
         }
 
     },
