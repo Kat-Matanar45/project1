@@ -84,6 +84,7 @@ const appData = {
             console.log(appData.fullPrice);
             console.log(appData.servicePercentPrice);
             console.log(appData.screens);
+            console.log(appData.services);
             for (let key in appData) {
                 console.log("Ключ: " + key + " " + "Значение: " + appData[key]);
             }
