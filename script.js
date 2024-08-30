@@ -14,13 +14,17 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num)
     },
     asking: function() {
-        appData.title = prompt("Как называется ваш проект?", " калькулятор верстки");
+        do {appData.title = prompt("Как называется ваш проект?")}
+        while (appData.isNumber(appData.title));
     
         appData.adaptive = confirm("Нужен ли адаптив на сайте?");
 
         for (let i = 0; i<2; i++) {
-            let name = prompt("Какие типы экранов нужно разработать?");
+            let name; 
             let value = 0;
+
+            do {name = prompt("Какие типы экранов нужно разработать?")}
+            while (appData.isNumber(name));
 
             do {value = prompt('Сколько будет стоить данная работа?')} 
             while((!appData.isNumber(value)) || (value === null));
@@ -30,8 +34,11 @@ const appData = {
         }
 
         for (let i = 0; i<2; i++) {
-            let name = prompt('Какой дополнительный тип услуги нужен?');
+            let name; 
             let value = 0;
+
+            do {name = prompt('Какой дополнительный тип услуги нужен?')}
+            while (appData.isNumber(name));
     
             do {value = prompt('Сколько это будет стоить?')} 
             while((!appData.isNumber(value)) || (value === null));
