@@ -36,14 +36,20 @@ const appData = {
         for (let i = 0; i<2; i++) {
             let name; 
             let value = 0;
+            let suffix = 1;
 
             do {name = prompt('Какой дополнительный тип услуги нужен?')}
             while (appData.isNumber(name));
-    
+   
             do {value = prompt('Сколько это будет стоить?')} 
             while((!appData.isNumber(value)) || (value === null));
             value = Number(value.trim());
-            appData.services[name] = +value;
+
+           while (appData.services.hasOwnProperty(name + (suffix > 1 ? '_' + suffix : ''))) {
+            suffix++;
+        }
+    
+        appData.services[name + (suffix > 1 ? '_' + suffix : '')] = +value;
         }
 
     },
