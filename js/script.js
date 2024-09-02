@@ -1,5 +1,22 @@
 'use strict'
 
+let title = document.getElementsByTagName('h1');
+console.log(title[0]);
+
+let btn = document.getElementsByClassName('handler_btn');
+console.log(btn);
+
+let plus = document.querySelector('.screen-btn');
+console.log(plus);
+
+let percent = document.querySelectorAll('.other-items.percent');
+let number = document.querySelectorAll('.other-items.number');
+console.log(percent);
+console.log(number);
+
+let input12 = document.querySelector('.rollback input[type=range]');
+console.log(input12);
+
 const appData = {
     title: '',
     screens: [],
