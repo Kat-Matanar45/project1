@@ -17,6 +17,18 @@ console.log(number);
 let input12 = document.querySelector('.rollback input[type=range]');
 console.log(input12);
 
+let span12 = document.querySelector('.rollback span[class="range-value"]');
+console.log(span12);
+
+let input123 = document.getElementsByClassName('total-input');
+console.log(input123);
+for (let i=0; i<input123.length; i++) {
+    console.log(input123[i]);
+}
+
+let screen = document.querySelectorAll('.screen');
+console.log(screen);
+
 const appData = {
     title: '',
     screens: [],
