@@ -1,10 +1,12 @@
 'use strict'
 
-let title = document.getElementsByTagName('h1');
-console.log(title[0]);
+let title = document.getElementsByTagName('h1')[0];
+console.log(title);
 
 let btn = document.getElementsByClassName('handler_btn');
-console.log(btn);
+let btnOk = btn[0];
+let btnEsc = btn[1];
+console.log(btnOk, btnEsc);
 
 let plus = document.querySelector('.screen-btn');
 console.log(plus);
@@ -14,17 +16,19 @@ let number = document.querySelectorAll('.other-items.number');
 console.log(percent);
 console.log(number);
 
-let input12 = document.querySelector('.rollback input[type=range]');
-console.log(input12);
+let inputRange = document.querySelector('.rollback input[type=range]');
+console.log(inputRange);
 
-let span12 = document.querySelector('.rollback span[class="range-value"]');
-console.log(span12);
+let spanRange = document.querySelector('.rollback span[class="range-value"]');
+console.log(spanRange);
 
-let input123 = document.getElementsByClassName('total-input');
-console.log(input123);
-for (let i=0; i<input123.length; i++) {
-    console.log(input123[i]);
-}
+let input = document.getElementsByClassName('total-input');
+let input1 = input[0];
+let input2 = input[1];
+let input3 = input[2];
+let input4 = input[3];
+let input5 = input[4];
+console.log(input1, input2, input3, input4, input5);
 
 let screen = document.querySelectorAll('.screen');
 console.log(screen);
