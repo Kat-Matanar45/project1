@@ -34,6 +34,16 @@ const appData = {
     servicePercentPrice: 0,
     allServicePrices: 0,
     rollback: 10,
+    init: function() {
+        appData.addTitle();
+        btnOk.addEventListener('click', appData.start);
+    },
+    addScreens: function() {
+
+    },
+    addTitle: function() {
+        document.title = title.textContent;
+    },
     isNumber: function(num) {
         return !isNaN(parseFloat(num)) && isFinite(num)
     },
@@ -121,16 +131,16 @@ const appData = {
             console.log(appData.services);
             },
     start: function() {
-        appData.asking();
-        appData.addPrices();
-        appData.getFullPrice();
-        appData.getServicePercentPrices();
-        appData.getTitle();
-        appData.logger();
+       // appData.asking();
+       // appData.addPrices();
+       // appData.getFullPrice();
+       // appData.getServicePercentPrices();
+       // appData.getTitle();
+       // appData.logger();
     }
 }
 
-appData.start();
+appData.init();
 
 
 
