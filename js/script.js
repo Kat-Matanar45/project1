@@ -1,37 +1,28 @@
 'use strict'
 
 let title = document.getElementsByTagName('h1')[0];
-console.log(title);
 
 let btn = document.getElementsByClassName('handler_btn');
 let btnOk = btn[0];
 let btnEsc = btn[1];
-console.log(btnOk, btnEsc);
 
 let plus = document.querySelector('.screen-btn');
-console.log(plus);
 
 let percent = document.querySelectorAll('.other-items.percent');
 let number = document.querySelectorAll('.other-items.number');
-console.log(percent);
-console.log(number);
 
 let inputRange = document.querySelector('.rollback input[type=range]');
-console.log(inputRange);
 
 let spanRange = document.querySelector('.rollback span[class="range-value"]');
-console.log(spanRange);
 
 let input = document.getElementsByClassName('total-input');
-let input1 = input[0];
-let input2 = input[1];
-let input3 = input[2];
-let input4 = input[3];
-let input5 = input[4];
-console.log(input1, input2, input3, input4, input5);
+let inputTotal = input[0];
+let inputCount = input[1];
+let inputOther = input[2];
+let inputFullCount = input[3];
+let inputRollback = input[4];
 
 let screen = document.querySelectorAll('.screen');
-console.log(screen);
 
 const appData = {
     title: '',
