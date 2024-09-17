@@ -38,13 +38,21 @@ const appData = {
     rollback: 10,
     init: function() {
         appData.addTitle();
-        
-       // while ((appData.screens[2] === 0) && (input.textContent === 'Количество ')) {
-       //     btnOk.disabled = true;
-       // }  
-        
-        btnOk.addEventListener('click', appData.start);
+
+        btnOk.addEventListener('click', appData.inError);
         plus.addEventListener('click', appData.addSreenBlock); 
+        
+    },
+    inError: function() {
+        const allSelectValue = document.querySelectorAll('select[name=views-select]')[0].value;
+        const inputTextValue = document.querySelector('input[type="text"]').value;
+        let error;
+
+        if ((allSelectValue === '') || (inputTextValue === '')) {error = true}
+        else {error = false};
+
+        if (error === false) {appData.start()} 
+        else {alert("Заполните все поля!")};
     },
     addScreens: function() {
         screen = document.querySelectorAll('.screen');
@@ -58,9 +66,7 @@ const appData = {
             id: index, 
             name: selectName, 
             value: +select.value * +input.value });
-
         });
-
     },
     addServices: function() {
         percent.forEach(function(item) {
