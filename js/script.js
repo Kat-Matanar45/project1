@@ -82,6 +82,9 @@ const appData = {
         const cloneScreen = screen[0].cloneNode(true);
         screen[screen.length - 1].after(cloneScreen);
     },
+    addTitle: function() {
+        document.title = title.textContent;
+    },
     addPrices: function() {
         appData.screenPrice = appData.screens.reduce(function (sum, screens) {
             return sum + screens.value
