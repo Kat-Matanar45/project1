@@ -38,8 +38,13 @@ const appData = {
     rollback: 10,
     init: function() {
         appData.addTitle();
+        
+       // while ((appData.screens[2] === 0) && (input.textContent === 'Количество ')) {
+       //     btnOk.disabled = true;
+       // }  
+        
         btnOk.addEventListener('click', appData.start);
-        plus.addEventListener('click', appData.addSreenBlock);
+        plus.addEventListener('click', appData.addSreenBlock); 
     },
     addScreens: function() {
         screen = document.querySelectorAll('.screen');
@@ -53,7 +58,9 @@ const appData = {
             id: index, 
             name: selectName, 
             value: +select.value * +input.value });
+
         });
+
     },
     addServices: function() {
         percent.forEach(function(item) {
