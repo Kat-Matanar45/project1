@@ -74,8 +74,16 @@ const appData = {
         appData.screens.push({ 
             id: index, 
             name: selectName, 
-            value: +select.value * +input.value });
+            value: +select.value * +input.value,
+            count: +input.value});
         });
+    },
+    sumCount: function(sum) {
+        sum = 0;
+        for (let i=0; i<appData.screens.length; i++) {
+           sum = appData.screens[i].count + sum;
+        };
+        return sum;
     },
     addServices: function() {
         percent.forEach(function(item) {
@@ -129,18 +137,8 @@ const appData = {
         inputOther.value = appData.servicePricesNumber + appData.servicePricesPercent;
         inputFullCount.value = appData.fullPrice;
         inputRollback.value = appData.servicePercentPrice;
+        inputCount.value = appData.sumCount();
     },
-    getRollbackMessage: function(price) {
-        switch (true) {
-            case price >= 30000:
-                return "Даем скидку в 10% \nИтоговая сумма за работу:" + " " + (price - (price/100*10));
-            case price >= 15000 && price < 30000:
-                return "Даем скидку в 5% \nИтоговая сумма за работу:" + " " + (price - (price/100*5));
-            case price >= 0 && price < 15000:
-                return "Скидка не предусмотрена \nИтоговая сумма за работу:" + " " + price;
-            case price < 0:
-                return "Что-то пошло не так";
-        }},
     logger: function() {
             console.log(appData.fullPrice);
             console.log(appData.servicePercentPrice);
