@@ -41,6 +41,12 @@ const appData = {
 
         plus.addEventListener('click', appData.addSreenBlock); 
         btnOk.addEventListener('click', appData.inError);
+
+        inputRange.addEventListener('input', appData.rangeSpan);
+    },
+    rangeSpan: function(event) {
+        spanRange.textContent = event.target.value;
+        appData.rollback = +spanRange.textContent;
     },
     inError: function() {
        screen = document.querySelectorAll('.screen');
