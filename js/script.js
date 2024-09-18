@@ -47,7 +47,7 @@ const appData = {
 
         let error = false;
 
-        screen.forEach(function(screenen, index) {
+        screen.forEach(function(screenen) {
             const select = screenen.querySelector('select');
             const input = screenen.querySelector('input');
             
