@@ -121,11 +121,14 @@ const appData = {
         }
 
         appData.fullPrice = appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent;
+
+        appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
     },
     showResult: function() {
         inputTotal.value = appData.screenPrice;
         inputOther.value = appData.servicePricesNumber + appData.servicePricesPercent;
         inputFullCount.value = appData.fullPrice;
+        inputRollback.value = appData.servicePercentPrice;
     },
     getRollbackMessage: function(price) {
         switch (true) {
@@ -138,9 +141,6 @@ const appData = {
             case price < 0:
                 return "Что-то пошло не так";
         }},
-    getServicePercentPrices: function() {
-        appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
-            },
     logger: function() {
             console.log(appData.fullPrice);
             console.log(appData.servicePercentPrice);
@@ -153,7 +153,6 @@ const appData = {
        appData.addPrices();
        appData.showResult();
 
-       // appData.getServicePercentPrices();
        // appData.logger();
     }
 }
