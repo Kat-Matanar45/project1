@@ -39,9 +39,8 @@ const appData = {
     init: function() {
         appData.addTitle();
 
-        btnOk.addEventListener('click', appData.inError);
         plus.addEventListener('click', appData.addSreenBlock); 
-        
+        btnOk.addEventListener('click', appData.inError);
     },
     inError: function() {
         const allSelectValue = document.querySelectorAll('select[name=views-select]')[0].value;
@@ -50,6 +49,11 @@ const appData = {
 
         if ((allSelectValue === '') || (inputTextValue === '')) {error = true}
         else {error = false};
+
+        for (let i=0; i<appData.screens.length; i++) {
+        if ((appData.screens[i].value === 0) || (appData.screens[i].name === 'Тип экранов')) {error = true}
+        else {error = false};
+    };
 
         if (error === false) {appData.start()} 
         else {alert("Заполните все поля!")};
