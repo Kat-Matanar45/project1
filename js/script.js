@@ -43,17 +43,16 @@ const appData = {
         btnOk.addEventListener('click', appData.inError);
     },
     inError: function() {
-        const allSelectValue = document.querySelectorAll('select[name=views-select]')[0].value;
-        const inputTextValue = document.querySelector('input[type="text"]').value;
-        let error;
+       screen = document.querySelectorAll('.screen');
 
-        if ((allSelectValue === '') || (inputTextValue === '')) {error = true}
-        else {error = false};
+        let error = false;
 
-        for (let i=0; i<appData.screens.length; i++) {
-        if ((appData.screens[i].value === 0) || (appData.screens[i].name === 'Тип экранов')) {error = true}
-        else {error = false};
-    };
+        screen.forEach(function(screenen, index) {
+            const select = screenen.querySelector('select');
+            const input = screenen.querySelector('input');
+            
+        if ((select.value === '') || (input.value === '')) {error = true};
+        });
 
         if (error === false) {appData.start()} 
         else {alert("Заполните все поля!")};
