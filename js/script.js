@@ -35,7 +35,7 @@ const appData = {
     servicePercentPrice: 0,
     servicePricesPercent: 0,
     servicePricesNumber: 0,
-    rollback: 10,
+    rollback: 0,
     init: function() {
         appData.addTitle();
 
@@ -45,7 +45,7 @@ const appData = {
         inputRange.addEventListener('input', appData.rangeSpan);
     },
     rangeSpan: function(event) {
-        spanRange.textContent = event.target.value;
+        spanRange.textContent = event.target.value + "%";
         appData.rollback = +spanRange.textContent;
     },
     inError: function() {
