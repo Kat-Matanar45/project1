@@ -53,7 +53,7 @@ const appData = {
 
         let error = false;
 
-        screen.forEach(function(screenen) {
+        screen.forEach((screenen) => {
             const select = screenen.querySelector('select');
             const input = screenen.querySelector('input');
             
@@ -66,7 +66,7 @@ const appData = {
     addScreens: function() {
         screen = document.querySelectorAll('.screen');
 
-        screen.forEach(function(screenen, index) {
+        screen.forEach((screenen, index) => {
             const select = screenen.querySelector('select');
             const input = screenen.querySelector('input');
             const selectName = select.options[select.selectedIndex].textContent;
@@ -86,7 +86,7 @@ const appData = {
         return sum;
     },
     addServices: function() {
-        percent.forEach(function(item) {
+        percent.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             const label = item.querySelector('label');
             const input = item.querySelector('input[type=text]');
@@ -96,7 +96,7 @@ const appData = {
             };
         });
 
-        number.forEach(function(item) {
+        number.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             const label = item.querySelector('label');
             const input = item.querySelector('input[type=text]');
