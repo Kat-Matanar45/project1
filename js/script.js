@@ -60,7 +60,7 @@ const appData = {
         if ((select.value === '') || (input.value === '')) {error = true};
         });
 
-        if (error === false) {this.start()} 
+        if (error === false) {appData.start()} 
         else {alert("Заполните все поля!")};
     },
     addScreens: function() {
@@ -104,7 +104,7 @@ const appData = {
             if (check.checked) {
                 this.servicesNumber[label.textContent] = +input.value;
             };
-        })
+        });
 
         console.log(appData)
     },
@@ -155,7 +155,7 @@ const appData = {
     }
 }
 
-this.init();
+appData.init();
 
 
 
