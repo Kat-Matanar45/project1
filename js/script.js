@@ -46,7 +46,7 @@ const appData = {
     },
     rangeSpan: function(event) {
         spanRange.textContent = event.target.value + "%";
-        appData.rollback = +spanRange.textContent;
+        appData.rollback = event.target.value;
     },
     inError: function() {
        screen = document.querySelectorAll('.screen');
