@@ -42,6 +42,7 @@ const appData = {
         plus.addEventListener('click', this.addSreenBlock.bind(this));
         btnOk.addEventListener('click', this.inError.bind(this));
         inputRange.addEventListener('input', this.rangeSpan.bind(this));
+        btnEsc.addEventListener('click', this.reset.bind(this));
     },
     rangeSpan: function (event) {
         spanRange.textContent = event.target.value + "%";
@@ -63,7 +64,9 @@ const appData = {
         });
 
         if (error === false) { 
-            this.start() 
+            this.start();
+            btnOk.style.display = 'none';  
+            btnEsc.style.display = 'block'; 
         } else { 
             alert("Заполните все поля!") 
         };
@@ -146,18 +149,75 @@ const appData = {
         inputRollback.value = this.servicePercentPrice;
         inputCount.value = this.sumCount();
     },
-    logger: function () {
-        console.log(this.fullPrice);
-        console.log(this.servicePercentPrice);
-        console.log(this.screens);
-        console.log(this.services);
-    },
     start: function () {
         this.addScreens();
         this.addServices();
         this.addPrices();
         this.showResult();
+        console.log(appData);
+        this.blocking();
+    },
+    blocking: function() {
+        screen = document.querySelectorAll('.screen');
+
+        screen.forEach((screenen) => {
+            const select = screenen.querySelector('select');
+            const input = screenen.querySelector('input[type=text]');
+
+            select.disabled = true;
+            input.disabled = true;
+        })
+
+        plus.disabled = true;
+    },
+    reset: function() {
+        btnOk.style.display = 'block';  
+        btnEsc.style.display = 'none';
+
+        this.screenPrice = 0;
+        this.servicesPercent = {};
+        this.servicesNumber = {};
+        this.fullPrice = 0;
+        this.servicePercentPrice = 0;
+        this.servicePricesPercent = 0;
+        this.servicePricesNumber = 0;
+        this.rollback = 0;
+
+        screen = document.querySelectorAll('.screen');
+
+        screen.forEach((screenen) => {
+            const select = screenen.querySelector('select');
+            const input = screenen.querySelector('input[type=text]');
+
+            select.disabled = false;
+            input.disabled = false;
+
+            input.value = '';
+            select.value = '';
+        });
+
+        inputTotal.value = '';
+        inputCount.value = '';
+        inputOther.value = '';
+        inputFullCount.value = '';
+        inputRollback.value = '';
+
+        percent.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.checked = false;
+        });
+
+        number.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.checked = false;
+        });
+
+       // spanRange.value = this.rollback;
+      appData.screens = [];
+       // appData.screens = appData.screens.splice(0, appData.screens.length);
+        plus.disabled = false;
+        console.log(appData);
     }
-}
+};
 
 appData.init();
