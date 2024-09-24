@@ -37,7 +37,7 @@ const appData = {
     servicePricesNumber: 0,
     rollback: 0,
     init: function() {
-        appData.addTitle();
+        this.addTitle();
 
         plus.addEventListener('click', this.addSreenBlock); 
         btnOk.addEventListener('click', this.inError);
@@ -116,16 +116,16 @@ const appData = {
         document.title = title.textContent;
     },
     addPrices: function() {
-        appData.screenPrice = appData.screens.reduce(function (sum, screens) {
+        this.screenPrice = this.screens.reduce(function (sum, screens) {
             return sum + screens.value
           }, 0);
 
-        for (let key in appData.servicesNumber) {
-            appData.servicePricesNumber += appData.servicesNumber[key]
+        for (let key in this.servicesNumber) {
+            this.servicePricesNumber += this.servicesNumber[key]
         }
 
-        for (let key in appData.servicesPercent) {
-            appData.servicePricesPercent += appData.screenPrice * (appData.servicesPercent[key] / 100);
+        for (let key in this.servicesPercent) {
+            this.servicePricesPercent += this.screenPrice * (this.servicesPercent[key] / 100);
         }
 
         appData.fullPrice = appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent;
@@ -155,8 +155,12 @@ const appData = {
     }
 }
 
+
 appData.init();
 
+// btn.addEventListener('click', appData.init.bind(appData))
+// const newInit = appData.bind(init);
 
+// newInit();
 
 
