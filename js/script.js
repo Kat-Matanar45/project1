@@ -173,6 +173,7 @@ const appData = {
     reset: function() {
         btnOk.style.display = 'block';  
         btnEsc.style.display = 'none';
+        plus.disabled = false;
 
         this.screenPrice = 0;
         this.servicesPercent = {};
@@ -182,10 +183,11 @@ const appData = {
         this.servicePricesPercent = 0;
         this.servicePricesNumber = 0;
         this.rollback = 0;
+        this.screens = [];
 
         screen = document.querySelectorAll('.screen');
 
-        screen.forEach((screenen) => {
+        screen.forEach((screenen, index) => {
             const select = screenen.querySelector('select');
             const input = screenen.querySelector('input[type=text]');
 
@@ -194,6 +196,8 @@ const appData = {
 
             input.value = '';
             select.value = '';
+
+            if (index > 0) {screenen.remove();}
         });
 
         inputTotal.value = '';
@@ -212,11 +216,8 @@ const appData = {
             check.checked = false;
         });
 
-       // spanRange.value = this.rollback;
-      appData.screens = [];
-       // appData.screens = appData.screens.splice(0, appData.screens.length);
-        plus.disabled = false;
-        console.log(appData);
+        inputRange.value = 0;
+        spanRange.textContent = '0%';
     }
 };
 
