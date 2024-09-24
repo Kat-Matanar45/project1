@@ -154,7 +154,6 @@ const appData = {
         this.addServices();
         this.addPrices();
         this.showResult();
-        console.log(appData);
         this.blocking();
     },
     blocking: function() {
@@ -173,7 +172,6 @@ const appData = {
     reset: function() {
         btnOk.style.display = 'block';  
         btnEsc.style.display = 'none';
-        plus.disabled = false;
 
         this.screenPrice = 0;
         this.servicesPercent = {};
@@ -218,6 +216,8 @@ const appData = {
 
         inputRange.value = 0;
         spanRange.textContent = '0%';
+
+        plus.disabled = false;
     }
 };
 
