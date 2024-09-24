@@ -24,6 +24,8 @@ let inputRollback = input[4];
 
 let screen = document.querySelectorAll('.screen');
 
+const checkCms = document.querySelector('#cms-open');
+
 const appData = {
     title: '',
     screens: [],
@@ -36,6 +38,7 @@ const appData = {
     servicePricesPercent: 0,
     servicePricesNumber: 0,
     rollback: 0,
+    sumWord: 0,
     init: function () {
         this.addTitle();
 
@@ -43,6 +46,7 @@ const appData = {
         btnOk.addEventListener('click', this.inError.bind(this));
         inputRange.addEventListener('input', this.rangeSpan.bind(this));
         btnEsc.addEventListener('click', this.reset.bind(this));
+        checkCms.addEventListener('click', this.cms.bind(this));
     },
     rangeSpan: function (event) {
         spanRange.textContent = event.target.value + "%";
@@ -67,6 +71,7 @@ const appData = {
             this.start();
             btnOk.style.display = 'none';  
             btnEsc.style.display = 'block'; 
+            
         } else { 
             alert("Заполните все поля!") 
         };
@@ -140,7 +145,11 @@ const appData = {
 
         this.fullPrice = this.screenPrice + this.servicePricesNumber + this.servicePricesPercent;
 
+        if (this.sumWord !== 0) {this.fullPrice = this.fullPrice + (this.fullPrice * this.sumWord / 100)}
+
         this.servicePercentPrice = this.fullPrice - (this.fullPrice * (this.rollback / 100));
+
+        
     },
     showResult: function () {
         inputTotal.value = this.screenPrice;
@@ -218,6 +227,28 @@ const appData = {
         spanRange.textContent = '0%';
 
         plus.disabled = false;
+    },
+    cms: function() {
+        const blokVariants = document.querySelector('.hidden-cms-variants');
+
+        blokVariants.style.display = 'flex'; 
+
+        checkCms.addEventListener('change', (event) => {
+            if (event.target.checked) {  
+                const selectCms = document.querySelector('#cms-select');  
+                selectCms.addEventListener('change', (event) => {
+                    
+                const selectedValue = event.target.value; 
+                if (selectedValue === "other") {this.cmsOther()};
+                if (selectedValue === 50) {appData.sumWord = 50};
+                console.log(appData.sumWord)
+                // вот тут почему-то значение sumWord всегда равно 0
+    })}});
+
+    },
+    cmsOther: function() {
+        const blokVariantsOther = document.querySelector('.hidden-cms-variants .main-controls__input');
+        blokVariantsOther.style.display = 'flex';
     }
 };
 
