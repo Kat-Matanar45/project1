@@ -182,6 +182,15 @@ const appData = {
         btnOk.style.display = 'block';  
         btnEsc.style.display = 'none';
 
+        this.resetData();
+        this.resetScreen();
+        this.resetService();
+        this.resetInput();
+        this.resetCms();
+
+        plus.disabled = false;
+    },
+    resetData: function() {
         this.screenPrice = 0;
         this.servicesPercent = {};
         this.servicesNumber = {};
@@ -191,7 +200,8 @@ const appData = {
         this.servicePricesNumber = 0;
         this.rollback = 0;
         this.screens = [];
-
+    },
+    resetScreen: function() {
         screen = document.querySelectorAll('.screen');
 
         screen.forEach((screenen, index) => {
@@ -206,13 +216,8 @@ const appData = {
 
             if (index > 0) {screenen.remove();}
         });
-
-        inputTotal.value = '';
-        inputCount.value = '';
-        inputOther.value = '';
-        inputFullCount.value = '';
-        inputRollback.value = '';
-
+    },
+    resetService: function() {
         percent.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             check.checked = false;
@@ -222,11 +227,16 @@ const appData = {
             const check = item.querySelector('input[type=checkbox]');
             check.checked = false;
         });
+    },
+    resetInput: function() {
+        inputTotal.value = '';
+        inputCount.value = '';
+        inputOther.value = '';
+        inputFullCount.value = '';
+        inputRollback.value = '';
 
         inputRange.value = 0;
         spanRange.textContent = '0%';
-
-        plus.disabled = false;
     },
     cms: function() {
         const blokVariants = document.querySelector('.hidden-cms-variants');
@@ -247,6 +257,12 @@ const appData = {
     cmsOther: function() {
         const blokVariantsOther = document.querySelector('.hidden-cms-variants .main-controls__input');
         blokVariantsOther.style.display = 'flex';
+    },
+    resetCms: function() {
+        const blokVariants = document.querySelector('.hidden-cms-variants');
+        blokVariants.style.display = 'none'; 
+        
+        checkCms.checked = false;
     }
 };
 
