@@ -131,7 +131,7 @@ const appData = {
         document.title = title.textContent;
     },
     addPrices: function () {
-        this.screenPrice = this.screens.reduce(function (sum, screens) {
+        this.screenPrice = this.screens.reduce((sum, screens) => {
             return sum + screens.value
         }, 0);
 
@@ -240,9 +240,7 @@ const appData = {
                     
                 const selectedValue = event.target.value; 
                 if (selectedValue === "other") {this.cmsOther()};
-                if (selectedValue === 50) {appData.sumWord = 50};
-                console.log(appData.sumWord)
-                // вот тут почему-то значение sumWord всегда равно 0
+                if (selectedValue === '50') {appData.sumWord = 50};
     })}});
 
     },
