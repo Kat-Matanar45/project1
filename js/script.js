@@ -25,6 +25,9 @@ let inputRollback = input[4];
 let screen = document.querySelectorAll('.screen');
 
 const checkCms = document.querySelector('#cms-open');
+const selectCms = document.querySelector('#cms-select');
+const blokVariantsOther = document.querySelector('.hidden-cms-variants .main-controls__input');
+const otherInput = document.querySelector("input[id=cms-other-input]");
 
 const appData = {
     title: '',
@@ -62,18 +65,18 @@ const appData = {
             const select = screenen.querySelector('select');
             const input = screenen.querySelector('input');
 
-            if ((select.value === '') || (input.value === '')) { 
-                error = true 
+            if ((select.value === '') || (input.value === '')) {
+                error = true
             };
         });
 
-        if (error === false) { 
+        if (error === false) {
             this.start();
-            btnOk.style.display = 'none';  
-            btnEsc.style.display = 'block'; 
-            
-        } else { 
-            alert("Заполните все поля!") 
+            btnOk.style.display = 'none';
+            btnEsc.style.display = 'block';
+
+        } else {
+            alert("Заполните все поля!")
         };
     },
     addScreens: function () {
@@ -124,7 +127,7 @@ const appData = {
     },
     addSreenBlock: function () {
         const cloneScreen = screen[0].cloneNode(true);
-        
+
         screen[screen.length - 1].after(cloneScreen);
     },
     addTitle: function () {
@@ -145,11 +148,13 @@ const appData = {
 
         this.fullPrice = this.screenPrice + this.servicePricesNumber + this.servicePricesPercent;
 
-        if (this.sumWord !== 0) {this.fullPrice = this.fullPrice + (this.fullPrice * this.sumWord / 100)}
+        if (this.sumWord !== 0) {
+            this.fullPrice = this.fullPrice + (this.fullPrice * this.sumWord / 100)
+        }
 
         this.servicePercentPrice = this.fullPrice - (this.fullPrice * (this.rollback / 100));
 
-        
+
     },
     showResult: function () {
         inputTotal.value = this.screenPrice;
@@ -165,7 +170,7 @@ const appData = {
         this.showResult();
         this.blocking();
     },
-    blocking: function() {
+    blocking: function () {
         screen = document.querySelectorAll('.screen');
 
         screen.forEach((screenen) => {
@@ -177,9 +182,12 @@ const appData = {
         })
 
         plus.disabled = true;
+        selectCms.disabled = true;
+        otherInput.disabled = true;
+        checkCms.disabled = true;
     },
-    reset: function() {
-        btnOk.style.display = 'block';  
+    reset: function () {
+        btnOk.style.display = 'block';
         btnEsc.style.display = 'none';
 
         this.resetData();
@@ -190,7 +198,7 @@ const appData = {
 
         plus.disabled = false;
     },
-    resetData: function() {
+    resetData: function () {
         this.screenPrice = 0;
         this.servicesPercent = {};
         this.servicesNumber = {};
@@ -201,7 +209,7 @@ const appData = {
         this.rollback = 0;
         this.screens = [];
     },
-    resetScreen: function() {
+    resetScreen: function () {
         screen = document.querySelectorAll('.screen');
 
         screen.forEach((screenen, index) => {
@@ -214,10 +222,12 @@ const appData = {
             input.value = '';
             select.value = '';
 
-            if (index > 0) {screenen.remove();}
+            if (index > 0) {
+                screenen.remove();
+            }
         });
     },
-    resetService: function() {
+    resetService: function () {
         percent.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             check.checked = false;
@@ -228,7 +238,7 @@ const appData = {
             check.checked = false;
         });
     },
-    resetInput: function() {
+    resetInput: function () {
         inputTotal.value = '';
         inputCount.value = '';
         inputOther.value = '';
@@ -238,31 +248,58 @@ const appData = {
         inputRange.value = 0;
         spanRange.textContent = '0%';
     },
-    cms: function() {
+    cms: function () {
         const blokVariants = document.querySelector('.hidden-cms-variants');
 
-        blokVariants.style.display = 'flex'; 
+        blokVariants.style.display = 'flex';
 
         checkCms.addEventListener('change', (event) => {
-            if (event.target.checked) {  
-                const selectCms = document.querySelector('#cms-select');  
+            if (event.target.checked) {
+                
+                selectCms.style.display = 'flex';
                 selectCms.addEventListener('change', (event) => {
-                    
-                const selectedValue = event.target.value; 
-                if (selectedValue === "other") {this.cmsOther()};
-                if (selectedValue === '50') {appData.sumWord = 50};
-    })}});
+
+                    const selectedValue = event.target.value;
+                    if (selectedValue === "other") {
+                        this.cmsOther();
+                    } else {
+                        blokVariantsOther.style.display = 'none';
+                    };
+                    if (selectedValue === '50') {
+                        appData.sumWord = 50
+                    };
+                })
+            } else {
+                selectCms.style.display = 'none';
+                otherInput.style.display = 'none';
+                appData.sumWord = 0;
+                selectCms.value = '';
+            }
+        });
 
     },
-    cmsOther: function() {
-        const blokVariantsOther = document.querySelector('.hidden-cms-variants .main-controls__input');
+    cmsOther: function () {
+
         blokVariantsOther.style.display = 'flex';
-    },
-    resetCms: function() {
-        const blokVariants = document.querySelector('.hidden-cms-variants');
-        blokVariants.style.display = 'none'; 
+        otherInput.style.display = 'flex';
+
+
+        otherInput.addEventListener('input', () => {
+            appData.sumWord = otherInput.value;
+        });
         
+    },
+    resetCms: function () {
+        const blokVariants = document.querySelector('.hidden-cms-variants');
+        blokVariants.style.display = 'none';
+
         checkCms.checked = false;
+        selectCms.disabled = false;
+        otherInput.disabled = false;
+        selectCms.value = '';
+        otherInput.value = '';
+        otherInput.style.display = 'none';
+        checkCms.disabled = false;
     }
 };
 
