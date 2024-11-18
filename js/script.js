@@ -246,6 +246,7 @@ const appData = {
         inputRollback.value = '';
 
         inputRange.value = 0;
+        appData.sumWord = 0;
         spanRange.textContent = '0%';
     },
     cms: function () {
